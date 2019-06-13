@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import static java.lang.Thread.*;
+
 @SpringBootApplication
 @EnableEurekaClient
 @RestController
@@ -23,6 +25,11 @@ public class DemoEurekaClientApplication {
 
     @GetMapping("/hi")
     public String home(@RequestParam(value = "name", defaultValue = "forezp") String name) {
+        try {
+            sleep(1000L);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         return "hi " + name + " ,i am from port:" + port;
     }
 }

@@ -14,6 +14,13 @@ hystrix:
     enabled: true
   command:
     ##全局方法使用default
+    default:
+      execution:
+        timeout:
+          enabled: true
+        isolation:
+          thread:
+            timeoutInMilliseconds: 10000
     SchedualServiceHi#sayHiFromClientOne():
       execution:
         isolation:
@@ -23,4 +30,3 @@ hystrix:
       circuitBreaker:
         ##每秒3次请求
         requestVolumeThreshold: 3
-
